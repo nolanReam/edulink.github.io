@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="timer.css">
+    <title>EduLink - Home</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+  </head>
+  <body>
+  <div class="header">
+  <a href="home.html" class="logo"><img src="eduLink_logo.png"></a>
+  <div class="header-right">
+    <a href="home.html">Home</a>
+    <a class="active" href="#contact">Anti-Procrastination Timer</a>
+    <a href="calendar2.html">Calendar</a>
+  </div>
+</div>
+           <div class="timer-container">
+        <h1 id="timer">00:00:00</h1>
+        <div class="buttons">
+            <button onclick="startTimer()">Start</button>
+            <button onclick="pauseTimer()">Pause</button>
+            <button onclick="resetTimer()">Reset</button>
+            <input type="text" id="hoursInput" placeholder="Hours">
+            <input type="text" id="minutesInput" placeholder="Minutes">
+            <input type="text" id="secondsInput" placeholder="Seconds">
+        </div>
+    </div>
+    <script src="timer.js"></script>
+    <audio id="alarmSound" src="sound.mp3" preload="auto"></audio>
+    <br>
+<iframe width="1900" height="625" src="https://www.youtube.com/embed/n61ULEU7CO0?si=7FlHzmzYZ4NfSwUt&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</body>
+</html>

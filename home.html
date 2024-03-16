@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>EduLink - Home</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+  </head>
+  <body>
+<div class="header">
+  <a href="home.html" class="logo"><img src="eduLink_logo.png"></a>
+  <div class="header-right">
+    <a class="active" href="home.html">Home</a>
+    <a href="timer.html">Anti-Procrastination Timer</a>
+    <a href="calendar2.html">Calendar</a>
+  </div>
+</div>
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <img src="img1.jpg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+  <img src="img2.jpg" style="width:100%">
+</div>
+
+<div class="mySlides fade">
+  <img src="img3.jpg" style="width:100%">
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+<h1 class="heada">Procrastination and ways to prevent it</h1>
+<p class="para">
+Procrastination, the habitual act of delaying tasks, can have detrimental effects on both personal and professional life. Firstly, procrastination often leads to increased stress and anxiety levels. When tasks are continuously postponed, they pile up, creating an overwhelming sense of pressure as deadlines approach. This can result in rushed and subpar work quality, further exacerbating stress levels and potentially leading to negative consequences such as missed opportunities or damaged relationships. Additionally, procrastination can hinder personal growth and development by preventing individuals from achieving their goals and realizing their full potential.
+
+One effective strategy to combat procrastination is the use of a to-do list. A to-do list serves as a visual reminder of tasks that need to be completed, helping individuals prioritize and organize their workload. By breaking down larger tasks into smaller, manageable steps, a to-do list can make daunting projects seem more approachable. Moreover, crossing items off a to-do list provides a sense of accomplishment, motivating individuals to continue working towards their goals. By consistently updating and revising the to-do list, individuals can stay on track and maintain a clear focus on their objectives, reducing the likelihood of procrastination.
+
+Another helpful tool in the battle against procrastination is the anti-procrastination timer. This technique involves setting a timer for a specific period, typically 25 minutes, and working on a task with undivided attention until the timer goes off. This method, known as the Pomodoro Technique, helps individuals overcome procrastination by breaking work into manageable intervals and providing regular breaks for rest and rejuvenation. By committing to focused work sessions and limiting distractions during these intervals, individuals can increase productivity and avoid succumbing to procrastination habits. Additionally, the time constraint imposed by the timer creates a sense of urgency, encouraging individuals to stay focused and make the most of their time. Overall, the combination of a to-do list and an anti-procrastination timer can be powerful tools in overcoming procrastination and achieving success in various aspects of life.</p>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 10000); // Change image every 10 seconds
+}
+
+
+
+</script>
+  </body>
+</html>

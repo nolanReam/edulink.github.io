@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/x-icon" href="favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-do List</title>
+<style>
+
+@keyframes borderFade {
+    25% { border-color: #ffd28f; }
+    75% { border-color: #fa9702; }
+}
+@keyframes textFade {
+    25% { color: #ffd28f; }
+    75% { color: #fa9702; }
+}
+/* Red color for the delete button */
+.deleteButton {
+  background-color: #e74c3c; /* Red color */
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 25px; /* Add margin to push the delete button further right */
+}
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #5c5c5c; /* Gray background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh;
+    background-color: #32313b;
+  }
+   .clock {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   font-size: 56px; /* Adjust the font size as needed */
+    color: #8fb2ff; /* White color for the clock */
+   margin: 20px; /* Add margin for spacing */
+   position: fixed; /* Position fixed */
+   top: 0; /* Position at the top */
+   left: 0; /* Position at the left */
+   font-weight: bold;
+  }
+  .container {
+    width: 80%;
+    max-width: 700px;
+    background-color: #2980b9; /* Dodger Blue */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 5px solid #ffc266;
+    animation: borderFade 3s infinite alternate;
+  }
+  .header {
+    background-color: #273061; /* Slightly lighter shade of Dodger Blue */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+  }
+ /* Darker shade of blue for the calendar */
+#calendar {
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff;
+  background-color: #41509e; /* Darker shade of blue */
+  animation: textFade 3s infinite alternate;
+}
+
+/* Darker shade of blue for the calendar headers */
+#calendar th {
+  background-color: #344180; /* Darker shade of blue */
+}
+
+/* Darker shade of blue for the calendar borders */
+#calendar th, #calendar td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #344180; /* Darker shade of blue */
+}
+
+  #calendar td:first-child {
+    width: 35%;
+  }
+  #addEventForm {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5a66a1; /* Slightly lighter shade of Dodger Blue */
+    animation: textFade 3s infinite alternate;
+  }
+  #addEventForm label {
+    font-weight: bold;
+    color: #fff;
+    animation: textFade 3s infinite alternate;
+  }
+  #addEventForm input[type="date"], #addEventForm input[type="text"], #addEventForm button {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  #addEventForm button {
+    background-color: #2ecc71; /* Emerald Green */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  #addEventForm button:hover {
+    background-color: #27ae60; /* Slightly lighter shade of Emerald Green */
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   /* Button style */
+    .homeButton {
+    position: fixed; /* Position the button relative to the viewport */
+    top: 0; /* Position at the top */
+    right: 0; /* Position at the left */
+    margin: 20px; /* Add some margin for spacing */
+    padding: 10px 20px;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+    background-color: dodgerblue;
+    }
+
+    /* Hover effect */
+    .homeButton:hover {
+      background-color: #1e6fd9; /* Darker shade of Dodger Blue on hover */
+    }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+</style>
+</head>
+<body>
+
+
+
+<a href="home.html" class="homeButton">Home</a>
+
+
+
+
+
+
+<div class="clock" id="clock"></div> <!-- Clock element -->
+<div class="container">
+  <div class="header">To-Do List</div>
+  <table id="calendar">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Event</th>
+      </tr>
+    </thead>
+    <tbody id="calendarBody">
+      <!-- Calendar body will be populated dynamically -->
+    </tbody>
+  </table>
+
+  <form id="addEventForm">
+    <label for="eventDate">Date:</label>
+    <input type="date" id="eventDate" required>
+    <label for="eventDescription">Event:</label>
+    <input type="text" id="eventDescription" required>
+    <button type="submit">Add Event</button>
+  </form>
+</div>
+
+
+
+
+
+
+<script>
+  // Function to update clock every second
+  function updateClock() {
+    var now = new Date();
+    var hours = now.getHours().toString().padStart(2, '0');
+    var minutes = now.getMinutes().toString().padStart(2, '0');
+    var seconds = now.getSeconds().toString().padStart(2, '0');
+    var timeString = hours + ':' + minutes + ':' + seconds;
+    document.getElementById('clock').textContent = timeString;
+  }
+
+  // Update clock initially
+  updateClock();
+
+  // Update clock every second
+  setInterval(updateClock, 1000);
+
+  // Load saved events from local storage
+  document.addEventListener("DOMContentLoaded", function() {
+    var savedEvents = JSON.parse(localStorage.getItem("events")) || [];
+    savedEvents.forEach(function(event) {
+      addEventToCalendar(event.date, event.description);
+    });
+  });
+
+  // Add event to calendar
+  function addEventToCalendar(date, description) {
+    var newRow = document.getElementById("calendarBody").insertRow();
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Finish";
+    deleteButton.className = "deleteButton";
+    deleteButton.onclick = function() {
+      deleteEvent(this); // Corrected function name
+    };
+    cell1.innerHTML = date;
+    cell2.innerHTML = description;
+    cell2.appendChild(deleteButton); // Append delete button to the event cell
+  }
+
+  // Handle form submission
+  document.getElementById("addEventForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var date = document.getElementById("eventDate").value;
+    var description = document.getElementById("eventDescription").value;
+    addEventToCalendar(date, description);
+
+    // Save events to local storage
+    var savedEvents = JSON.parse(localStorage.getItem("events")) || [];
+    savedEvents.push({ date: date, description: description });
+    localStorage.setItem("events", JSON.stringify(savedEvents));
+
+    // Clear form fields
+    document.getElementById("eventDate").value = "";
+    document.getElementById("eventDescription").value = "";
+  });
+
+  // Delete event from calendar and local storage
+function deleteEvent(button) {
+  var row = button.parentNode.parentNode;
+  var date = row.cells[0].innerHTML;
+  var description = row.cells[1].innerHTML;
+
+  // Remove event from table
+  row.parentNode.removeChild(row);
+
+  // Remove event from local storage
+  var savedEvents = JSON.parse(localStorage.getItem("events")) || [];
+  savedEvents = savedEvents.filter(function(event) {
+    return !(event.date === date && event.description === description);
+  });
+  localStorage.setItem("events", JSON.stringify(savedEvents));
+}
+
+</script>
+</body>
+</html>
